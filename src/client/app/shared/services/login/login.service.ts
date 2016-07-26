@@ -4,11 +4,9 @@ import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import {SessionStorageService} from 'ng2-webstorage';
-//import * as _ from 'lodash';
 
-import { URLConfig } from '../../models/api-url.config';
-import { User, UserForm } from '../../models/user.model';
-import { parseResponse, parseUser } from '../../util/util.exports';
+import { URLConfig, User, LoginForm, ResponseData } from '../../models/index';
+import { parseResponse, parseUser, AppConstant } from '../../util/index';
 
 /**
  * Login Service: Perform user login and authemtication operations 
@@ -17,10 +15,10 @@ import { parseResponse, parseUser } from '../../util/util.exports';
 export class LoginService {
 
     public currUser:User;
-    public userForm:UserForm;
+    public userForm:LoginForm;
     private user$:Observable<User>;
 
-    constructor(private localSt:SessionStorageService,
+    constructor(private sessionSt:SessionStorageService,
                 private http: Http) {}
 
     public isAuthenticated() : boolean {
@@ -29,18 +27,27 @@ export class LoginService {
 
     public setUser(user:User):void {
         this.currUser = user;
-        this.localSt.store('user', this.currUser);
+        this.sessionSt.store('user', this.currUser);
     }
 
-    authenticateUser(userForm:UserForm) : Observable<User> {
+    public getStorageObservable() : Observable<User> {
+        return this.sessionSt.observe('user').asObservable();
+    }
+
+    authenticateUser(userForm:LoginForm) : Observable<User> {
         console.log('authenticate user service');
-        console.log(URLConfig.HOST_URL+ URLConfig.LOGIN_URL);
+        console.log(URLConfig.DEV_HOST_URL+ URLConfig.LOGIN_URL);
         if(!this.isAuthenticated()) {
-            this.user$ = this.http.post(URLConfig.HOST_URL+URLConfig.LOGIN_URL, userForm)
+            this.user$ = this.http.post(URLConfig.DEV_HOST_URL+URLConfig.LOGIN_URL, userForm)
                     .map((response:Response) => <any>response.json())
                     .map((response:any) => {
                         console.log(response);
-                        return parseUser(parseResponse(response).successResponse);
+                        const res:ResponseData = parseResponse(response);
+                        if(res.status === AppConstant.FAILURE) {
+                            throw new Error(res.failureResponse);
+                        }else {
+                           return  parseUser(res.successResponse)
+                        }
                     });
         }
         return this.user$;

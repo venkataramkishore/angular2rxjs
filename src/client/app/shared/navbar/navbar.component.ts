@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { SessionStorage, SessionStorageService} from 'ng2-webstorage';
 
-import { User } from '../models/index';
+import { User, NavBarMenu } from '../models/index';
 
 import { NavbarService } from '../services/navbar/navbar.service';
 /**
@@ -17,7 +17,7 @@ import { NavbarService } from '../services/navbar/navbar.service';
 })
 export class NavbarComponent implements OnInit {
 
-  public navMenu:{};
+  public navMenu:NavBarMenu;
 
     @SessionStorage('user')
     public user:User;
@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit {
         .subscribe((newValue:User) => {
             console.log(newValue);
             if(newValue) {
-              this.navbarService.changeToUserMenu();
+              this.navbarService.changeToUserMenu(newValue);
             }else {
               this.navbarService.changeToDefaultMenu();
             }

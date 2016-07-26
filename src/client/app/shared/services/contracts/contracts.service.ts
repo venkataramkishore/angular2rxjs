@@ -20,7 +20,7 @@ export class ContractService {
         if(!this.isRequested) {
             //to control the request multiple times
             this.isRequested = true;
-            this.listOfContracts$ = this.http.get( URLConfig.HOST_URL+URLConfig.CONTRACT_ALL)
+            this.listOfContracts$ = this.http.get( URLConfig.DEV_HOST_URL+URLConfig.CONTRACT_ALL)
             .map((res: Response) => res.json())
             .map((response:any) => {
                  let responseData:ResponseData = parseResponse(response);

@@ -7,21 +7,23 @@
 */
 export class User {
 
-    public loginId:number;
-    public lastLoginDatetime:string;
-    public firstName:string;
-    public lastName:string;
-    public roleId:number;
-    public role:String;
+    public loginId: number;
+    public lastLoginDatetime: string;
+    public userName:string;
+    public firstName: string;
+    public lastName: string;
+    public roleId: number;
+    public role: string;
+    public password: string;
 
-    constructor () {
-        //TODO::
+    constructor() {
+         //TODO::
     }
 };
 
-export class UserForm {
-    public userName:string;
-	public password:string;
+export class LoginForm {
+    public userName: string;
+    public password: string;
 
     constructor() {
         //TODO::

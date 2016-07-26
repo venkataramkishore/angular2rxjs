@@ -6,20 +6,25 @@
 			    		<h3 class="panel-title">Please login with valid credentials</h3>
 			 			</div>
 			 			<div class="panel-body">
-			    		<form role="form" (ngSubmit)="onSubmit()" name="loginForm" #loginForm="ngForm" novalidate>
-			    			<div class="form-group" [class.has-error]="userName.dirty || userName.invalid"
-                                [class.has-success]="userName.valid"> 
-			    				<input type="email" name="userName" #userName="ngModel" [(ngModel)]="userForm.userName"  
-                                     class="form-control input-sm" placeholder="Email id" required autofocus>
-                                <p [class.visible]="userName.dirty || userName.invalid">Username is required.</p>
+			    		<form role="form" (ngSubmit)="onSubmit()" [formGroup]="validFormGroup" novalidate>
+			    			<div class="form-group" [class.has-error]="validFormGroup.controls.userName?.dirty && !validFormGroup.controls.userName?.valid"
+                                [class.has-success]="validFormGroup.controls.userName?.valid"> 
+			    				<label class="form-control-label">Username</label>
+								<input type="email" formControlName="userName" [(ngModel)]="userForm.userName"  
+                                     class="form-control input-sm" placeholder="Email id" validateEmail autofocus>
+                                <p [hidden]="validFormGroup.controls.userName?.pristine || validFormGroup.controls.userName?.valid">Username is required with valid email format.</p>
 			    			</div>
                             <div class="form-group">
-                                <input type="password" name="pwd" [(ngModel)]="userForm.password"
-                                    #pwd="ngModel" class="form-control input-sm" placeholder="Password" required>
-                                <p [class.visible]="pwd.invalid || !pwd.pristine">Password is required.</p>
+								<label class="form-control-label">Password</label>
+                                <input type="password" formControlName="password" [(ngModel)]="userForm.password"
+									[class.has-error]="validFormGroup.controls.password?.dirty && !validFormGroup.controls.password?.valid"
+                                	[class.has-success]="validFormGroup.controls.password?.valid"
+                                     class="form-control input-sm" placeholder="Password" required>
+                                <p [hidden]="validFormGroup.controls.password?.pristine || validFormGroup.controls.password?.valid">Password is required.</p>
                             </div>
-			    			<input type="submit" [class.disabled]="!loginForm.form.valid" value="Login" class="btn btn-info btn-block">
+			    			<input type="submit" [disabled]="!validFormGroup.valid" value="Login" class="btn btn-info btn-block">
 			    		</form>
+						<p class="alert alert-danger" *ngIf="errorMsg">{{errorMsg}}</p>
 			    	</div>
 	    		</div>
     		</div>

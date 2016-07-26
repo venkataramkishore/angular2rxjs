@@ -8,3 +8,6 @@ export * from './services/index';
 export * from './models/index';
 export * from './util/index';
 export * from './login/index';
+export * from './logout/index';
+export * from './guards/index';
+export * from './form-validator/index';

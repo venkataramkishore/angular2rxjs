@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { User , UserForm} from '../models/index';
+import { User , LoginForm} from '../models/index';
 import { ROUTER_DIRECTIVES , Router} from '@angular/router';
+
+import {REACTIVE_FORM_DIRECTIVES, FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {EmailValidatorDirective} from '../form-validator/index';
 
 import { Observable }   from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -12,20 +15,30 @@ import { LoginService } from '../services/index';
     moduleId: module.id,
     selector: 'login-form',
     templateUrl: 'login.component.html',
-    directives: [ROUTER_DIRECTIVES]
+    styleUrls: ['login.component.css'],
+    directives: [ROUTER_DIRECTIVES, REACTIVE_FORM_DIRECTIVES, EmailValidatorDirective]
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
     public submit:boolean;
     public user$:Observable<User>;
-    public userForm:UserForm;
+    public userForm:LoginForm;
     public subscription : Subscription;
 
+    public validFormGroup:FormGroup;
+    public errorMsg :string;
     public user:User;
 
     constructor(public loginService:LoginService,
+                private formBuilder: FormBuilder,
                 public router:Router) {
-        this.userForm = new UserForm();
+        this.userForm = new LoginForm();
+
+        //model driven form validation
+        this.validFormGroup = this.formBuilder.group({
+            userName: ['', Validators.required],
+            password: ['', Validators.required]
+        });
     }
 
     ngOnInit() {
@@ -34,17 +47,20 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     public onSubmit(): void {
         console.log('onSubmit');
-        this.user$ =  this.loginService.authenticateUser( this.userForm );
-        this.subscription =  this.user$.subscribe(
+        if(!this.submit) {
+            this.user$ =  this.loginService.authenticateUser( this.userForm );
+            this.subscription =  this.user$.subscribe(
                                     this.handleLoginOnNext.bind(this),
-                                    this.handleLoginOnError,
+                                    this.handleLoginOnError.bind(this),
                                     this.handleLoginOnComplete
                                 );
+        }
         this.submit = true;
     }
 
     ngOnDestroy() {
-        if(this.subscription && !this.subscription.isUnsubscribed){
+        this.submit = false;
+        if(this.subscription && !this.subscription.isUnsubscribed) {
             this.subscription.unsubscribe();
         }
     }
@@ -55,12 +71,18 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.user = user;
             this.loginService.setUser(this.user);
             this.router.navigate(['/contracts']);
+        }else {
+            this.errorMsg='Please provide valid credentials.';
         }
+        this.submit = false;
     }
 
     private handleLoginOnError(error:any): void {
+        this.errorMsg=error.message || error.statusText;
+        this.submit = false;
         console.log(error);
     }
+
     private handleLoginOnComplete(): void {
         console.log('Login observable completed');
     }

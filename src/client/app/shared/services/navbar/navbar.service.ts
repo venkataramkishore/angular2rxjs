@@ -1,14 +1,14 @@
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import {NavBarMenu, MenuItem } from '../../models/index';
+import {NavBarMenu, MenuItem, User } from '../../models/index';
 /**
  * Navbarservice
  * Provide navigation menu options
  */
 export class NavbarService {
 
-    public navBarSubject:Subject<{}>;
+    public navBarSubject:Subject<NavBarMenu>;
 
     private navbarMenu: NavBarMenu;
     private _defaultMenu:boolean = true;
@@ -53,13 +53,18 @@ export class NavbarService {
         return this._userMenu;
     }
 
-    public changeToUserMenu():void {
+    public changeToUserMenu(user:User):void {
         console.log('User Menu');
         if (this.isDefaultMenu) {
             this.navbarMenu.mainmenu.forEach((element:MenuItem) => {
                 element.expose = !element.expose;
             });
 
+            //Add new user details as dropdown menu
+            const userTitlemenu:MenuItem = new MenuItem('user', user.firstName+', '+user.lastName, [''], false, true, true, [
+                new MenuItem('changepwd','Change Password', ['/'], true, true)
+            ]);
+            this.navbarMenu.usermenu.push(userTitlemenu);
             this.navbarMenu.usermenu.forEach( (element:MenuItem) => {
                     element.expose = !element.expose;
             });
@@ -78,16 +83,16 @@ export class NavbarService {
             });
 
             this.navbarMenu.usermenu.forEach( (element:MenuItem) => {
-                    element.expose = !element.expose;
+                    element.expose = false;
             });
 
-            this.navBarSubject.next({});
+            this.navBarSubject.next(this.navbarMenu);
             this._defaultMenu=true;
             this._userMenu=false;
         }
     }
 
-    public getNavbarMenu(): Subject<{}> {
+    public getNavbarMenu(): Subject<NavBarMenu> {
         return this.navBarSubject;
     }
 
