@@ -46,7 +46,7 @@ export class LoginService {
                         if(res.status === AppConstant.FAILURE) {
                             throw new Error(res.failureResponse);
                         }else {
-                           return  parseUser(res.successResponse)
+                           return  parseUser(res.successResponse);
                         }
                     });
         }

@@ -19,5 +19,4 @@ export function validateEmail(c: FormControl) {
     { provide: NG_VALIDATORS, useValue: validateEmail, multi: true }
   ]
 })
-export class EmailValidatorDirective {
-}
+export class EmailValidatorDirective {}
