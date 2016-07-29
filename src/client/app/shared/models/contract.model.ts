@@ -12,6 +12,7 @@ export class Contract {
 	public loginId:number;
 	public statusId:number;
 	public status:string;
+    public active:number;
 
     constructor() {
         //TODO::

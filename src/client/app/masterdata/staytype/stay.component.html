@@ -1,0 +1,35 @@
+<div class="container-fluid well">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Stay Type(s)</h3>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-condensed table-striped table-hover table-bordered">
+                    <thead>
+                        <tr class="primary">
+                         	<th>ID#</th>
+                            <th>Stay Type</th>
+                            <th>Edit/Del</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="!isAvailable">
+                        <tr>
+                            <td colspan="3">No Stay Type(s) available. <br/>{{errorMsg}}</td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="isAvailable">
+                        <tr *ngFor="let stay of stays$ | async">
+                           <td>{{stay.stayTypeId}}</td>
+                            <td>{{stay.stayType}}</td>
+                            <td>
+                                <button data-ng-click="edit(stay.stayTypeId)" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span></button>
+                                <button data-ng-click="remove(stay.stayTypeId)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

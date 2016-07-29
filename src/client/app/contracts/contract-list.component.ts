@@ -15,21 +15,20 @@ declare var jQuery:any;
 })
 export class ContractListComponent implements OnInit, OnDestroy {
 
-    public contractList:Observable<Contract[]>;
-    public isContractList:boolean;
+    public contractList$:Observable<Contract[]>;
+    public isAvailable:boolean;
     public contractFilter:string;
 
     private subscription:Subscription;
     constructor(private contractService:ContractService) { }
 
     ngOnInit() {
-        this.contractList = this.contractService.getAllContracts();
-        this.subscription =  this.contractList.subscribe(
+        this.contractList$ = this.contractService.getAllContracts();
+        this.subscription =  this.contractList$.subscribe(
                                         this.handleLoginOnNext,
                                         this.handleLoginOnError,
                                         this.handleLoginOnComplete
                                     );
-        jQuery('[data-toggle="tooltip"]').tooltip();
      }
 
     ngOnDestroy() {
@@ -42,7 +41,8 @@ export class ContractListComponent implements OnInit, OnDestroy {
     private handleLoginOnNext(contractList:Contract[]) : void {
         console.log(contractList);
         if(_.isObject(contractList)) {
-            this.isContractList = true;
+            this.isAvailable = true;
+            jQuery('[data-toggle="tooltip"]').tooltip();
         }
     }
 

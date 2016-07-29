@@ -1,9 +1,9 @@
 {
   "dev": {
-    "API": "https://demo.com"
+    "API": "http://localhost:8080/ABFUsers"
   },
   "prod": {
-    "API": "https://prod.com"
+    "API": "http://sogeti-abf-sogeti-abf.openshift.sogeticloudservices.com"
   },
   "staging": {
     "API": "https://staging.com"

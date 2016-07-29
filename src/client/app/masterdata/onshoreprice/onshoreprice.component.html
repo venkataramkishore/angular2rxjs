@@ -1,0 +1,45 @@
+<div class="container-fluid well">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Onshore Price(s)</h3>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-condensed table-striped table-hover table-bordered">
+                    <thead>
+                        <tr class="primary">
+                         	<th>ID#</th>
+                            <th>Business Line</th>
+                            <th>Role</th>
+                            <th>Grade</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Edit/Del</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="!isAvailable">
+                        <tr>
+                            <td colspan="7">No Onshore Price(s) available. <br/>{{errorMsg}}</td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="isAvailable">
+                        <tr *ngFor="let price of onshoreprices$ | async">
+                            <td>{{price.onshorepriceId}}</td>
+                            <td>{{price.businessLineName}}</td>
+                            <td>{{price.roleType}}</td>
+                            <td>{{price.gradeType}}</td>
+                            <td>{{price.price}}</td>
+                            <td class="wrap">{{price.description}}</td>
+                            <td>
+                                <button data-ng-click="edit(price.onshorepriceId)" class="btn btn-primary btn-xs">
+                                    <span class="glyphicon glyphicon-edit"></span></button>
+                                <button data-ng-click="remove(price.onshorepriceId)" class="btn btn-danger btn-xs">
+                                    <span class="glyphicon glyphicon-trash"></span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

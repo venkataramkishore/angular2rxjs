@@ -1,5 +1,6 @@
 import { Injectable }     from '@angular/core';
 import { CanActivate, Router }    from '@angular/router';
+import * as _ from 'lodash';
 
 import {SessionStorageService} from 'ng2-webstorage';
 import {User} from '../models/index';
@@ -19,7 +20,9 @@ export class AuthGuard implements CanActivate {
     console.log('AuthGuard#canActivate called');
     if(!this.loginService.isAuthenticated()) {
       let loginUser:User = this.sessionSt.retrieve('user');
-      if(loginUser) {
+      console.log(loginUser);
+      if(_.isObject(loginUser)) {
+        this.loginService.setUser(loginUser);
         this.navBarService.changeToUserMenu(loginUser);
         return true;
       }else {

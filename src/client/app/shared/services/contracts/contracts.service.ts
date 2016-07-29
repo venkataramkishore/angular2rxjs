@@ -4,7 +4,8 @@ import { Observable } from 'rxjs/Observable';
 
 import * as _ from 'lodash';
 import { URLConfig, parseContract, parseResponse, ResponseData, AppConstant } from '../../index';
-import { Contract } from '../../models/contract.model';
+import { Contract } from '../../models/index';
+import {Config} from '../../index';
 
 @Injectable()
 export class ContractService {
@@ -20,15 +21,14 @@ export class ContractService {
         if(!this.isRequested) {
             //to control the request multiple times
             this.isRequested = true;
-            this.listOfContracts$ = this.http.get( URLConfig.DEV_HOST_URL+URLConfig.CONTRACT_ALL)
+            this.listOfContracts$ = this.http.get(Config.API + URLConfig.CONTRACT.ALL)
             .map((res: Response) => res.json())
             .map((response:any) => {
                  let responseData:ResponseData = parseResponse(response);
                  if( _.isEqual(responseData.status, AppConstant.SUCCESS) ) {
                      return responseData.successResponse.map(parseContract);
                  }else if( _.isEqual(responseData.status, AppConstant.FAILURE)) {
-                     console.error(responseData.failureResponse);
-                     return [];
+                     throw new Error(responseData.failureResponse);
                  }
             });
         }
