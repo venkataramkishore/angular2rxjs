@@ -37,7 +37,6 @@ export class BandComponent implements OnInit, OnDestroy {
     }
 
     private handleOnNext(bandList:Band[]) : void {
-        console.log(bandList);
         if(_.isArray(bandList)) {
             this.isAvailable = true;
         }

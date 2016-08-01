@@ -37,7 +37,6 @@ export class GradeComponent implements OnInit, OnDestroy {
     }
 
     private handleOnNext(gradeList:Grade[]) : void {
-        console.log(gradeList);
         if(_.isArray(gradeList)) {
             this.isAvailable = true;
         }

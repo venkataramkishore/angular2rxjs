@@ -1,3 +1,4 @@
+import * as mom from 'moment';
 export class Contract {
 
     public contractId:number;
@@ -13,7 +14,8 @@ export class Contract {
 	public statusId:number;
 	public status:string;
     public active:number;
-
+	public mStartContractDt:mom.Moment;
+	public mEndContractDt:mom.Moment;
     constructor() {
         //TODO::
     }

@@ -23,7 +23,7 @@
                         </tr>
                     </tbody>
                     <tbody *ngIf="isAvailable">
-                        <tr *ngFor="let price of onshoreprices$ | async">
+                        <tr *ngFor="let price of onshorePrices$ | async">
                             <td>{{price.onshorepriceId}}</td>
                             <td>{{price.businessLineName}}</td>
                             <td>{{price.roleType}}</td>

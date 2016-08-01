@@ -37,7 +37,6 @@ export class StayComponent implements OnInit, OnDestroy {
     }
 
     private handleOnNext(stayList:Stay[]) : void {
-        console.log(stayList);
         if(_.isArray(stayList)) {
             this.isAvailable = true;
         }

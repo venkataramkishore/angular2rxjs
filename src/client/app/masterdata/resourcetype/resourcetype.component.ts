@@ -17,12 +17,10 @@ export class ResourceTypeComponent implements OnInit, OnDestroy {
     public errorMsg: string;
 
     private resSub: Subscription;
-    //private isCalled: boolean;
 
     constructor(private resTypeService:ResourceTypeService) {}
 
     ngOnInit() {
-        //this.isCalled=false;
         this.isAvailable = false;
         this.resourceType$ = this.resTypeService.fetchAllResourceTypes();
         this.resSub = this.resourceType$.subscribe(
@@ -39,8 +37,7 @@ export class ResourceTypeComponent implements OnInit, OnDestroy {
     }
 
     private handleOnNext(resTypeList:ResourceType[]) : void {
-        console.log(resTypeList);
-        if(_.isArray(resTypeList)) {
+        if(_.isArray(resTypeList) && resTypeList.length>0) {
             this.isAvailable = true;
         }
     }

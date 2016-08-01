@@ -37,7 +37,6 @@ export class BusinessLineComponent implements OnInit, OnDestroy {
     }
 
     private handleOnNext(resTypeList:BusinessLine[]) : void {
-        console.log(resTypeList);
         if(_.isArray(resTypeList)) {
             this.isAvailable = true;
         }

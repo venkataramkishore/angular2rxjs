@@ -37,7 +37,6 @@ export class StatusComponent implements OnInit, OnDestroy {
     }
 
     private handleOnNext(statusList:Status[]) : void {
-        console.log(statusList);
         if(_.isArray(statusList)) {
             this.isAvailable = true;
         }

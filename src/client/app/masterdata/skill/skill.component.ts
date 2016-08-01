@@ -37,7 +37,6 @@ export class SkillComponent implements OnInit, OnDestroy {
     }
 
     private handleOnNext(skillList:Skill[]) : void {
-        console.log(skillList);
         if(_.isArray(skillList)) {
             this.isAvailable = true;
         }

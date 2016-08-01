@@ -2,11 +2,14 @@ import {User, ResponseData, Contract, ResourceType,
     Role, Band, BusinessLine, FixedHours, Grade, Stay,
     OffshorePrice, OnshorePrice, Status, UserRole, Skill} from '../models/index';
 import * as _ from 'lodash';
+import * as moment from 'moment';
 
 export function parseUser(object: any): User {
     let user: User;
     if (_.isObject(object)) {
         user = new User();
+        user.loginId = object.loginId;
+        user.userName= object.userName;
         user.firstName = object.firstName;
         user.lastName = object.lastName;
         user.role = object.role;
@@ -43,6 +46,8 @@ export function parseContract(object: any): Contract {
         contract.status = object.status;
         contract.statusId = object.statusId;
         contract.active = object.active;
+        contract.mStartContractDt = moment(object.contractStartDate);
+        contract.mEndContractDt = moment(object.contractEndDate);
     } else {
         throw new Error('Not a valid Contract');
     }

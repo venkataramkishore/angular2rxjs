@@ -37,7 +37,6 @@ export class OffshorePriceComponent implements OnInit, OnDestroy {
     }
 
     private handleOnNext(offshorePriceList:OffshorePrice[]) : void {
-        console.log(offshorePriceList);
         if(_.isArray(offshorePriceList)) {
             this.isAvailable = true;
         }

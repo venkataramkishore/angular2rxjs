@@ -37,7 +37,6 @@ export class UserRoleComponent implements OnInit, OnDestroy {
     }
 
     private handleOnNext(userRoleList:UserRole[]) : void {
-        console.log(userRoleList);
         if(_.isArray(userRoleList)) {
             this.isAvailable = true;
         }

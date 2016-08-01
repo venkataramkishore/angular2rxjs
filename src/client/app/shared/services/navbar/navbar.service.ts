@@ -64,9 +64,6 @@ export class NavbarService {
                 new MenuItem('logout', 'Logout',  ['/logout'], true, true)
             ]);
             this.navbarMenu.usermenu.push(userTitlemenu);
-            // this.navbarMenu.usermenu.forEach( (element:MenuItem) => {
-            //         element.expose = !element.expose;
-            // });
 
             this.navBarSubject.next(this.navbarMenu);
             this._userMenu = true;
