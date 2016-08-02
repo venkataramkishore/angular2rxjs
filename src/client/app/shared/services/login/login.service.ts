@@ -16,41 +16,37 @@ import {Config} from '../../index';
 @Injectable()
 export class LoginService {
 
-    public currUser:User;
-    public userForm:LoginForm;
-    private user$:Observable<User>;
+    public currUser: User;
+    public userForm: LoginForm;
+    private user$: Observable<User>;
 
-    constructor(private sessionSt:SessionStorageService,
-                private http: Http) {}
+    constructor(private sessionSt: SessionStorageService,
+        private http: Http) {}
 
-    public isAuthenticated() : boolean {
+    public isAuthenticated(): boolean {
         return !!this.currUser;
     }
 
-    public setUser(user:User):void {
+    public setUser(user: User): void {
         this.currUser = user;
         this.sessionSt.store('user', this.currUser);
     }
 
-    public getStorageObservable() : Observable<User> {
-        return this.sessionSt.observe('user').asObservable();
-    }
-
-    authenticateUser(userForm:LoginForm) : Observable<User> {
+    authenticateUser(userForm: LoginForm): Observable<User> {
         console.log('authenticate user service');
         console.log(Config.API + URLConfig.LOGIN_URL);
-        if(!this.isAuthenticated()) {
+        if (!this.isAuthenticated()) {
             this.user$ = this.http.post(Config.API + URLConfig.LOGIN_URL, userForm)
-                    .map((response:Response) => <any>response.json())
-                    .map((response:any) => {
-                        let responseData:ResponseData = parseResponse(response);
-                        if( _.isEqual(responseData.status, AppConstant.SUCCESS) ) {
-                            return parseUser(responseData.successResponse);
-                        }else if( _.isEqual(responseData.status, AppConstant.FAILURE)) {
-                            throw new Error(responseData.failureResponse);
-                        }
-                        return null;
-                    });
+                .map((response: Response) => <any>response.json())
+                .map((response: any) => {
+                    let responseData: ResponseData = parseResponse(response);
+                    if (_.isEqual(responseData.status, AppConstant.SUCCESS)) {
+                        return parseUser(responseData.successResponse);
+                    } else if (_.isEqual(responseData.status, AppConstant.FAILURE)) {
+                        throw new Error(responseData.failureResponse);
+                    }
+                    return null;
+                });
         }
         return this.user$;
     }

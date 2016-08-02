@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http, Response} from '@angular/http';
+
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+
+import {LocalStorageService} from 'ng2-webstorage';
 
 import * as _ from 'lodash';
 import { URLConfig, parseContract, parseResponse, ResponseData, AppConstant } from '../../index';
@@ -11,10 +16,21 @@ import {Config} from '../../index';
 export class ContractService {
 
     public listOfContracts$:Observable<Contract[]>;
-    public selectedContract:Contract;
     private isRequested:boolean = false;
+    private selectedContractSubject$:Subject<Contract> = new ReplaySubject<Contract>(1);
+    private _selectedContract$:Observable<Contract> = this.selectedContractSubject$.asObservable();
 
-    constructor(private http:Http) { }
+    constructor(private http:Http,
+                private localSt:LocalStorageService) { }
+
+    public setSelectedContract(selContract:Contract) :void {
+        this.selectedContractSubject$.next(selContract);
+        this.localSt.store('sel-contract', selContract);
+    }
+
+    public getSelectedContract():Observable<Contract> {
+        return this._selectedContract$;
+    }
 
     getAllContracts():Observable<Contract[]> {
 

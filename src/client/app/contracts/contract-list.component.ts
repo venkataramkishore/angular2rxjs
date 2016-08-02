@@ -1,4 +1,5 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
+import { ROUTER_DIRECTIVES , Router} from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -11,6 +12,7 @@ declare var jQuery:any;
     moduleId: module.id,
     selector: 'contract-list',
     templateUrl: 'contract-list.component.html',
+    directives:[ROUTER_DIRECTIVES],
     pipes: [ContractFilterPipe]
 })
 export class ContractListComponent implements OnInit, OnDestroy {
@@ -20,7 +22,8 @@ export class ContractListComponent implements OnInit, OnDestroy {
     public contractFilter:string;
 
     private subscription:Subscription;
-    constructor(private contractService:ContractService) { }
+    constructor(private contractService:ContractService,
+                private router:Router) { }
 
     ngOnInit() {
         this.contractList$ = this.contractService.getAllContracts();
@@ -38,6 +41,10 @@ export class ContractListComponent implements OnInit, OnDestroy {
         }
     }
 
+    public showContract(selContract:Contract):void {
+        this.contractService.setSelectedContract(selContract);
+        this.router.navigate(['/bookhours']);
+    }
     private handleLoginOnNext(contractList:Contract[]) : void {
         console.log(contractList);
         if(_.isObject(contractList)) {

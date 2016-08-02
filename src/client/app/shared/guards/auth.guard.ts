@@ -18,19 +18,18 @@ export class AuthGuard implements CanActivate {
 
   canActivate() {
     console.log('AuthGuard#canActivate called');
-    if(!this.loginService.isAuthenticated()) {
-      let loginUser:User = this.sessionSt.retrieve('user');
+    let loginUser:User = this.sessionSt.retrieve('user');
       console.log(loginUser);
       if(_.isObject(loginUser)) {
-        this.loginService.setUser(loginUser);
-        this.navBarService.changeToUserMenu(loginUser);
+        if(!this.loginService.isAuthenticated()) {
+          this.loginService.setUser(loginUser);
+          this.navBarService.changeToUserMenu(loginUser);
+        }
         return true;
       }else {
         this.navBarService.changeToDefaultMenu();
         this.router.navigate(['/login']);
         return false;
       }
-    }
-    return true;
   }
 }
