@@ -1,17 +1,18 @@
-import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { ResponseData } from '../../models/index';
+import { parseResponse } from '../../util/index';
 
-import {ResourceType} from '../../models/index';
-
-@Injectable()
+//@Injectable()
 export class MasterDataService {
-    private _resourceType$:Observable<ResourceType[]>;
 
-    public get resourceType$() : Observable<ResourceType[]> {
-        return this._resourceType$;
-    }
+    constructor (protected http:Http) {}
 
-    public set resourceType$(resType$:Observable<ResourceType[]>) {
-         this._resourceType$ = resType$;
+    getRequest(url:string):Observable<ResponseData> {
+        return  this.http.get(url)
+                    .map((response:Response) => <any>response.json())
+                    .map((response:Response) => {
+                        return parseResponse(response);
+                    });
     }
 }

@@ -11,3 +11,4 @@ export * from './band.service';
 export * from './status.service';
 export * from './stay.service';
 export * from './userrole.service';
+export * from './masterdata.service';

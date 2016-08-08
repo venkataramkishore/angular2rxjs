@@ -41,10 +41,10 @@
 							<td>{{contract.contractEndDate | date:'dd MMM yyyy'}}</td>
 							<td>{{contract.status}}</td>
 							<td>
-								<button (click)="editContract(contract)" type="button" data-toggle="tooltip" data-container="body" data-placement="top" title="Edit Contract"
+								<button (click)="editContract(contract)" type="button" title="Edit Contract"
 									class="btn btn-warning btn-xs"> 
 								<span class="glyphicon glyphicon-edit"></span> </button>
-								<button (click)="showContract(contract)" type="button" data-toggle="tooltip" data-container="body" data-placement="top" title="Book Hours"
+								<button (click)="showContract(contract)" type="button" title="Book Hours"
 									class="btn btn-primary btn-xs"> 
 								<span class="glyphicon glyphicon-time"></span> </button>
 							</td>

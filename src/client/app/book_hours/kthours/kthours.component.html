@@ -1,3 +1,18 @@
-<div>
-    <h3>KT Hours</h3>
+<div class="well well-lg">
+    <div class="row">
+        <div class="col-md-3">
+            <resource-form></resource-form>
+        </div>
+        <div class="col-md-9">
+            <onshore-table [resource]="resourceList"></onshore-table>
+            <offshore-table [resource]="resourceList"></offshore-table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-10">
+            <button type="button" class="btn btn-danger pull-right">   
+                <span class="glyphicon glyphicon-time"></span> Book Hours
+            </button>
+        </div>
+    </div>    
 </div>

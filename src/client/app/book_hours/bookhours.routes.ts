@@ -13,9 +13,6 @@ export const BookHoursRoutes: RouterConfig = [
     canActivate:[AuthGuard],
     children: [
       {
-        path: ''
-      },
-      {
         path: 'amhours',
         component: AMHoursComponent,
         canActivate: [AuthGuard]

@@ -1,3 +1,59 @@
-<div>
-    <h3>Fixed Hours</h3>
+<div class="well well-lg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <label class="forn-control-label">Fixed Hour(s)</label>
+                <select multiple="multiple" class="form-control" size="15" style="height:100%" [(ngModel)]="selectedFixedHours">
+		      <option *ngFor="let item of fixedHoursList | async" [label]="item.fixedcostName" [ngValue]="item"></option>
+		    </select>
+            </div>
+            <div class="col-md-10">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Offshore Price(s)</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <form class="form-horizontal">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-condensed table-striped">
+                                        <thead>
+                                            <tr class="bg-info">
+                                                <th>Fixed Cost</th>
+                                                <th>Value</th>
+                                                <th>Description</th>
+                                                <th>Del</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngFor="let fc of selectedFixedHours">
+                                            <tr>
+                                                <td>{{fc.fixedcostName}}</td>
+                                                <td><input type="text" pattern="\d{0,3}" class="form-control" required="required" maxlength="3" size="3"
+                                                        [(ngModel)]="fc.price" name="price" title="Only numeric value is allowed." /></td>
+                                                <td>
+                                                    <textarea class="form-control" rows="3" id="textArea" [(ngModel)]="fc.description" name="description"></textarea>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-block btn-danger" type="button">
+                                        <span class="glyphicon glyphicon-trash" data-ng-click="removeItem(fc)"></span>
+                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot data-ng-show="fixedProjectHoursList.length >0">
+                                            <tr>
+                                                <td colspan="4"><button class="btn btn-sm btn-warning pull-left" type="button" data-ng-click="resetFixedHours()">Reset</button>
+                                                    <button class="btn btn-sm btn-warning pull-right" type="button" data-ng-click="saveFixedHours()" data-ng-disabled="!fixedHourForm.$valid">Save</button></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>

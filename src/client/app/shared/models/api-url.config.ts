@@ -27,7 +27,7 @@ export const URLConfig = {
         CREATE: `/businessline/create`,
         FIND_BY_ID: `/businessline/find/P_BL`,
         RESOURCE_TYPE: `/businessline/resourceType/P_RT`,
-        RESOURCE_TYPE_SKILL: `/resourceType/P_RT/skill/P_SK`
+        RESOURCE_TYPE_SKILL: `/businessline/resourceType/P_RT/skill/P_SK`
     },
     SKILL: {
         ALL: `/skill/all`,
@@ -75,7 +75,8 @@ export const URLConfig = {
         UPDATE: `/fixedCost/update`,
         DELETE: `/fixedCost/delete/P_FC`,
         CREATE: `/fixedCost/create`,
-        FIND_BY_ID: `/fixedCost/find/P_FC`
+        FIND_BY_ID: `/fixedCost/find/P_FC`,
+        CONTRACT_FIXED_HOURS: `/fixedContract/contract/find/P_FC`
     },
     ONSHORE_PRICE: {
         ALL: `/onshorePrice/all`,

@@ -28,9 +28,9 @@ export class ContractListComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.contractList$ = this.contractService.getAllContracts();
         this.subscription =  this.contractList$.subscribe(
-                                        this.handleLoginOnNext,
-                                        this.handleLoginOnError,
-                                        this.handleLoginOnComplete
+                                        this.handleOnNext,
+                                        this.handleOnError,
+                                        this.handleOnComplete
                                     );
      }
 
@@ -43,9 +43,9 @@ export class ContractListComponent implements OnInit, OnDestroy {
 
     public showContract(selContract:Contract):void {
         this.contractService.setSelectedContract(selContract);
-        this.router.navigate(['/bookhours']);
+        this.router.navigate(['/bookhours/amhours']);
     }
-    private handleLoginOnNext(contractList:Contract[]) : void {
+    private handleOnNext(contractList:Contract[]) : void {
         console.log(contractList);
         if(_.isObject(contractList)) {
             this.isAvailable = true;
@@ -53,11 +53,11 @@ export class ContractListComponent implements OnInit, OnDestroy {
         }
     }
 
-    private handleLoginOnError(error:any): void {
+    private handleOnError(error:any): void {
         console.log(error);
     }
 
-    private handleLoginOnComplete(): void {
+    private handleOnComplete(): void {
         console.log('Contract List observable completed..!!');
     }
 

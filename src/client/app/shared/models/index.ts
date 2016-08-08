@@ -18,3 +18,7 @@ export * from './userrole.model';
 export * from './role.model';
 export * from './skill.model';
 export * from './stay.model';
+export * from './month.model';
+export * from './week.model';
+export * from './resource.model';
+export * from './contract-fixedhours.model';

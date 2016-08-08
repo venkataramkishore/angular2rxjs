@@ -1,0 +1,70 @@
+<form role="form" class="form-horizontal" novalidate>
+    <div class="form-group">
+        <label for="resourcetype" class="form-control-label">Resource Type</label>
+        <select class="form-control input-sm" [(ngModel)]="resource.resourceType" name="resourceType" (change)="resourceTypeChange()">
+                        <option value="-1" selected>Select</option>
+                        <option *ngFor="let item of resourceTypes$ | async" [label]="item.resourceType"  [ngValue]="item"></option>
+                    </select>
+    </div>
+    <div *ngIf="resource?.resourceType?.resourceType==='Offshore'">
+        <div class="form-group">
+            <label for="skill" class="form-control-label">Skill</label>
+            <select class="form-control input-sm" [(ngModel)]="resource.skill" name="skill" (change)="skillChange()">
+                        <option value="-1" selected>Select</option>
+                        <option *ngFor="let item of skills$ | async" [label]="item.skillName"  [ngValue]="item"></option>
+                    </select>
+        </div>
+        <div class="form-group">
+            <label for="business lines" class="form-control-label">Business Line</label>
+            <select class="form-control input-sm" [(ngModel)]="resource.businessLine" name="businessLine">
+                        <option value="-1"selected>Select</option>
+                        <option *ngFor="let item of blines$ | async" [label]="item.businesslineName" [ngValue]="item"></option>
+                    </select>
+        </div>
+        <div class="form-group">
+            <label for="band" class="form-control-label">Band</label>
+            <select class="form-control input-sm" [(ngModel)]="resource.band" name="band">
+                        <option value="-1"selected>Select</option>
+                        <option *ngFor="let item of bands$ | async" [label]="item.bandName" [ngValue]="item"></option>
+                    </select>
+        </div>
+        <div class="form-group">
+            <label for="stay" class="form-control-label">Stay</label>
+            <select class="form-control input-sm" [(ngModel)]="resource.stayType" name="stayType">
+                        <option value="-1"selected>Select</option>
+                        <option *ngFor="let item of stays$ | async" [label]="item.stayType" [ngValue]="item"></option>
+                    </select>
+        </div>
+    </div>
+    <div *ngIf="resource?.resourceType?.resourceType ==='Onshore'">
+        <div class="form-group">
+            <label for="business lines" class="form-control-label">Business Line</label>
+            <select class="form-control input-sm" [(ngModel)]="resource.businessLine" name="businessLine">
+                        <option value="-1"selected>Select</option>
+                        <option *ngFor="let item of blines$ | async" [label]="item.businesslineName" [ngValue]="item"></option>
+                    </select>
+        </div>
+        <div class="form-group">
+            <label for="role" class="form-control-label">Role</label>
+            <select class="form-control input-sm" [(ngModel)]="resource.role" name="role">
+                        <option value="-1"selected>Select</option>
+                        <option *ngFor="let item of roles$ | async" [label]="item.roleType" [ngValue]="item"></option>
+                    </select>
+        </div>
+        <div class="form-group">
+            <label for="grade" class="form-control-label">Grade</label>
+            <select class="form-control input-sm" [(ngModel)]="resource.grade" name="grade">
+                        <option value="-1"selected>Select</option>
+                        <option *ngFor="let item of grades$ | async" [label]="item.gradeType" [ngValue]="item"></option>
+                    </select>
+        </div>
+    </div>
+    <div class="form-group" *ngIf="resource?.resourceType">
+        <button type="button" class="btn btn-warning btn-sm" (click)="fetchPrice()">Fetch Price</button>
+        <input type="number" class="form-control input-sm" [(ngModel)]="resource.price" name="price" readonly>
+        <p class="alert alert-danger" *ngFor="let err of errorList">{{err}}</p>
+    </div>
+    <div class="form-group" *ngIf="enableAddBtn">
+        <button type="button" class="btn btn-primary" (click)="addResource()">Add Resource</button>
+    </div>
+</form>

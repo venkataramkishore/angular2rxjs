@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Contract } from '../../shared/models/index';
+import { Contract } from '../../../shared/models/index';
 
 @Component({
     moduleId: module.id,

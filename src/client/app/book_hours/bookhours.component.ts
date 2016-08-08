@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import {LocalStorageService} from 'ng2-webstorage';
 
 import { Contract } from '../shared/models/index';
-import { SelectedContractComponent } from './selectedcontract/index';
+import { SelectedContractComponent } from './shared/selectedcontract/index';
 import { ContractService } from '../shared/services/index';
 
 @Component({
