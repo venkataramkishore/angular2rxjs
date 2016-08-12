@@ -1,15 +1,22 @@
 <div class="row">
     <div class="col-md-2">
-        <div class="list-group">
-            <a class="list-group-item" [routerLink]="['/bookhours/amhours']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
-                <span class="glyphicon glyphicon-time"></span> AM Hours
-            </a>
-            <a class="list-group-item" [routerLink]="['/bookhours/kthours']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
-                <span class="glyphicon glyphicon-time"></span> KT Hours</a>
-            <a class="list-group-item" [routerLink]="['/bookhours/fixedhours']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
-                <span class="glyphicon glyphicon-time"></span> Fixed Hours</a>
-        </div>
-        <selected-contract [contract]="selectedContract"></selected-contract>
+        <ul class="nav nav-pills nav-stacked">
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]="['/bookhours/amhours']" >
+                    <span class="glyphicon glyphicon-time"></span> AM Hours
+            </a></li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]="['/bookhours/kthours']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                    <span class="glyphicon glyphicon-time"></span> KT Hours
+                </a></li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]="['/bookhours/fixedhours']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                    <span class="glyphicon glyphicon-time"></span> Fixed Hours
+                </a></li>
+            <li>
+                <selected-contract [contract]="selectedContract"></selected-contract>
+            </li>
+        </ul>
     </div>
     <div class="col-md-10">
         <router-outlet></router-outlet>

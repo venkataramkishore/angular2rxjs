@@ -3,7 +3,6 @@ import {User, ResponseData, Contract, ResourceType,
     OffshorePrice, OnshorePrice, Status, UserRole, Skill,
     ContractFixedHours} from '../models/index';
 import * as _ from 'lodash';
-import * as moment from 'moment';
 
 export function parseUser(object: any): User {
     let user: User;
@@ -47,8 +46,8 @@ export function parseContract(object: any): Contract {
         contract.status = object.status;
         contract.statusId = object.statusId;
         contract.active = object.active;
-        contract.mStartContractDt = moment(object.contractStartDate);
-        contract.mEndContractDt = moment(object.contractEndDate);
+        // contract.mStartContractDt = moment(object.contractStartDate);
+        // contract.mEndContractDt = moment(object.contractEndDate);
     } else {
         throw new Error('Not a valid Contract');
     }

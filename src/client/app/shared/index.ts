@@ -11,3 +11,4 @@ export * from './login/index';
 export * from './logout/index';
 export * from './guards/index';
 export * from './form-validator/index';
+export * from './pipes/index';

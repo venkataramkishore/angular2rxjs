@@ -1,9 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CurrencyFormatPipe } from '../../../shared/pipes/index';
 
 @Component({
     moduleId: module.id,
     selector: 'onshore-table',
-    templateUrl: 'onshore-table.component.html'
+    templateUrl: 'onshore-table.component.html',
+    pipes:[CurrencyFormatPipe]
 })
 export class OnshoreTableComponent<T> implements OnInit {
 

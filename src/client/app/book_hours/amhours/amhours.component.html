@@ -11,8 +11,19 @@
     <div class="row">
         <div class="col-md-2 col-md-offset-10">
             <button type="button" class="btn btn-danger pull-right">   
-                <span class="glyphicon glyphicon-time"></span> Book Hours
+                <span class="glyphicon glyphicon-time"></span> Continue
             </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <ul class="nav nav-tabs nav-stacked">
+                <li *ngFor="let item of resourceList">
+                    {{item.resourceType.resourceType +', &euro;'+ item.price}} <span class="badge">10</span></li> 
+            </ul>
+        </div>
+        <div class="col-md-10">
+            
         </div>
     </div>
 </div>

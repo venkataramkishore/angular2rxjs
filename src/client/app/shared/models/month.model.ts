@@ -5,13 +5,13 @@
 import { Week } from './index';
 
 export class Month {
+    public total:number;
     constructor(
         public name:string,
-        public total:number,
         public weeks:Week
     ) {
         this.name = name;
-        this.total = total;
         this.weeks = weeks;
+        this.total = this.weeks.w1 + this.weeks.w2 + this.weeks.w3 + this.weeks.w4;
     }
 }
