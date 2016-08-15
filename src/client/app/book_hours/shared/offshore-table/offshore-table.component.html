@@ -21,24 +21,26 @@
                     </h4>
                 </div>
                 <div id="collapse{{i}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading$index">
-                    <div class="container row">
-                        <div class="col-md-2" style="padding: 5px;" *ngFor="let month of resource.months">
-                            <ul class="list-group">
-                                <li class="list-group-item list-group-item-warning">{{month.name}}<span class="badge" [title]="month.total|eurCcyFmt">{{month.total|eurCcyFmt}}</span></li>
-                                <li class="list-group-item">
-                                    <input type="text" class="input-sm" title="W1:{{month.weeks.w1|eurCcyFmt}}" style="width: 100px"
-                                            [(ngModel)]="month.weeks.w1" placeholder="W1" />
-                                    <input type="text" class="input-sm" title="W2:{{month.weeks.w2|eurCcyFmt}}" style="width: 100px"
-                                            [(ngModel)]="month.weeks.w2" placeholder="W2" />
-                                </li>
-                                <li class="list-group-item">
-                                    <input type="text" class="input-sm" title="W3:{{month.weeks.w3|eurCcyFmt}}" style="width: 100px"
-                                        [(ngModel)]="month.weeks.w3" placeholder="W3" />
-                                    <input type="text" class="input-sm" title="W4:{{month.weeks.w4|eurCcyFmt}}" style="width: 100px"
-                                        [(ngModel)]="month.weeks.w4" placeholder="W4" />
-                                </li>
-                            </ul>
+                    <div class="container">
+                    <div class="row-fluid">
+                        <div class="col-md-2" style="padding-top:5px;" *ngFor="let month of resource.months">
+                            <div class="list-group">
+                                <div class="list-group-item list-group-item-warning">{{month.name}}<span class="badge pull-right margin-right: -5px" [title]="month.total|eurCcyFmt">{{month.total|eurCcyFmt}}</span></div>
+                                <div class="list-group-item">
+                                    <input type="text" class="input-sm" title="W1:{{month.weeks.w1|eurCcyFmt}}"
+                                            [(ngModel)]="month.weeks.w1" placeholder="W1" style="width:45%;margin-right:2%"/>
+                                    <input type="text" class="input-sm" title="W2:{{month.weeks.w2|eurCcyFmt}}"
+                                            [(ngModel)]="month.weeks.w2" placeholder="W2" style="width:45%;"/>
+                                </div>
+                                <div class="list-group-item">
+                                    <input type="text" class="input-sm" title="W3:{{month.weeks.w3|eurCcyFmt}}"
+                                        [(ngModel)]="month.weeks.w3" placeholder="W3" style="width:45%;margin-right:2%"/>
+                                    <input type="text" class="input-sm" title="W4:{{month.weeks.w4|eurCcyFmt}}"
+                                        [(ngModel)]="month.weeks.w4" placeholder="W4" style="width:45%"/>
+                                </div>
+                            </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
