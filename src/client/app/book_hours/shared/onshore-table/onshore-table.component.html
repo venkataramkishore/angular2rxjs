@@ -10,14 +10,14 @@
             <div class="panel panel-info" *ngFor="let resource of getOnshoreList(); let i = index">
                 <div class="panel-heading" role="tab" id="heading{{i}}">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#onShoreAccordion" href="#collapse{{i}}" aria-expanded="false" aria-controls="collapse$index">
+                        <a data-toggle="collapse" data-parent="#onShoreAccordion" href="#collapse-onshore-{{i}}" aria-expanded="false" aria-controls="collapse-onshore-$index">
                             {{resource?.resourceType?.resourceType}}, {{resource?.businessLine?.businesslineName}}, {{resource?.price|eurCcyFmt}}
                         </a>
                         <span class="glyphicon glyphicon-trash pull-right"
                                     data-ng-click="deleteResource(resource)"></span>
                     </h4>
                 </div>
-                <div id="collapse{{i}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading$index">
+                <div id="collapse-onshore-{{i}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-onshore-$index">
                     <div class="col-md-3" style="padding-top:5px;" *ngFor="let month of resource.months">
                             <div class="list-group">
                                 <div class="list-group-item list-group-item-warning">{{month.name}}
