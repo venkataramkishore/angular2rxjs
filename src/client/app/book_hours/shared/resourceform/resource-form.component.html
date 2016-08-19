@@ -1,37 +1,37 @@
 <form role="form" class="form-horizontal" novalidate>
     <div class="form-group">
         <label for="resourcetype" class="form-control-label">Resource Type</label>
-        <select class="form-control input-sm" [(ngModel)]="resource.resourceType" name="resourceType" (change)="resourceTypeChange()">
-                        <option value="-1" selected>Select</option>
+        <select class="form-control input-sm" [(ngModel)]="resource.resourceType" name="resourceType" (ngModelChange)="resourceTypeChange()">
+                        <option value="-1" label="Select"></option>
                         <option *ngFor="let item of resourceTypes$ | async" [label]="item.resourceType"  [ngValue]="item"></option>
                     </select>
     </div>
     <div *ngIf="resource?.resourceType?.resourceType==='Offshore'">
         <div class="form-group">
             <label for="skill" class="form-control-label">Skill</label>
-            <select class="form-control input-sm" [(ngModel)]="resource.skill" name="skill" (change)="skillChange()">
-                        <option value="-1" selected>Select</option>
+            <select class="form-control input-sm" [(ngModel)]="resource.skill" name="skill" (ngModelChange)="skillChange()">
+                        <option value="-1" label="Select"></option>
                         <option *ngFor="let item of skills$ | async" [label]="item.skillName"  [ngValue]="item"></option>
                     </select>
         </div>
         <div class="form-group">
             <label for="business lines" class="form-control-label">Business Line</label>
             <select class="form-control input-sm" [(ngModel)]="resource.businessLine" name="businessLine">
-                        <option value="-1"selected>Select</option>
+                        <option value="-1" label="Select"></option>
                         <option *ngFor="let item of blines$ | async" [label]="item.businesslineName" [ngValue]="item"></option>
                     </select>
         </div>
         <div class="form-group">
             <label for="band" class="form-control-label">Band</label>
             <select class="form-control input-sm" [(ngModel)]="resource.band" name="band">
-                        <option value="-1"selected>Select</option>
+                        <option value="-1" label="Select"></option>
                         <option *ngFor="let item of bands$ | async" [label]="item.bandName" [ngValue]="item"></option>
                     </select>
         </div>
         <div class="form-group">
             <label for="stay" class="form-control-label">Stay</label>
             <select class="form-control input-sm" [(ngModel)]="resource.stayType" name="stayType">
-                        <option value="-1"selected>Select</option>
+                        <option value="-1" label="Select"></option>
                         <option *ngFor="let item of stays$ | async" [label]="item.stayType" [ngValue]="item"></option>
                     </select>
         </div>
@@ -54,7 +54,7 @@
         <div class="form-group">
             <label for="grade" class="form-control-label">Grade</label>
             <select class="form-control input-sm" [(ngModel)]="resource.grade" name="grade">
-                        <option value="-1"selected>Select</option>
+                        <option value="-1" label="Select"></option>
                         <option *ngFor="let item of grades$ | async" [label]="item.gradeType" [ngValue]="item"></option>
                     </select>
         </div>

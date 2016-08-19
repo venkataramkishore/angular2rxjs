@@ -105,7 +105,7 @@ export class ResourceFormComponent implements OnInit, OnDestroy {
      * handle resource type change to fetch business lines
      */
     resourceTypeChange():void {
-        console.log(this.resource);
+        console.log(this.resource+ ' <> ' + this.resource.resourceType);
         if(_.isObject(this.resource.resourceType)) {
             switch (this.resource.resourceType.resourceType) {
                 case AppConstant.ONSHORE:
@@ -123,6 +123,7 @@ export class ResourceFormComponent implements OnInit, OnDestroy {
      * Handle skill change to fetch business lines
      */
     skillChange():void {
+        console.log(this.resource);
         if(this.resource.resourceType.resourceType ===AppConstant.OFFSHORE && _.isObject(this.resource.skill)) {
             this.blines$ = this.blineService.fetchBusinessLinesOnResourceTypeAndSkill(
                                             this.resource.resourceType.resourcetypeId,

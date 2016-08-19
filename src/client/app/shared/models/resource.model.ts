@@ -19,7 +19,16 @@ export class Resource {
     months: Month[];
     active: number;
 
-    constructor() {}
+    constructor() {
+        this.resourceType = new ResourceType('-1', 'Select', 1);
+        this.businessLine = new BusinessLine('-1', 'Select', -1, 'Select', -1, 'Select', 1);
+        this.skill = new Skill('-1', 'Select', 1);
+        this.band = new Band( -1, 'Select', 1);
+        this.role = new Role( '-1', 'Select', 1);
+        this.grade = new Grade('-1', 'Select', 1);
+        this.stayType = new Stay('-1', 'Select', 1);
+        this.months = new Array<Month>();
+    }
 }
 
 /**
@@ -44,6 +53,14 @@ export class AMResource extends Resource {
 
     constructor() {
         super();
+        this.resourceType = new ResourceType('-1', 'Select', 1);
+        this.businessLine = new BusinessLine('-1', 'Select', -1, 'Select', -1, 'Select', 1);
+        this.skill = new Skill('-1', 'Select', 1);
+        this.band = new Band( -1, 'Select', 1);
+        this.role = new Role( '-1', 'Select', 1);
+        this.grade = new Grade('-1', 'Select', 1);
+        this.stayType = new Stay('-1', 'Select', 1);
+        this.months = new Array<Month>();
     }
 }
 
@@ -66,5 +83,13 @@ export class KTResource extends Resource {
 
     constructor( ) {
        super();
+       this.resourceType = new ResourceType('-1', 'Select', 1);
+        this.businessLine = new BusinessLine('-1', 'Select', -1, 'Select', -1, 'Select', 1);
+        this.skill = new Skill('-1', 'Select', 1);
+        this.band = new Band( -1, 'Select', 1);
+        this.role = new Role( '-1', 'Select', 1);
+        this.grade = new Grade('-1', 'Select', 1);
+        this.stayType = new Stay('-1', 'Select', 1);
+        this.months = new Array<Month>();
     }
 }

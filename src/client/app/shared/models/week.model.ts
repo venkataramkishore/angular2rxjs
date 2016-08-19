@@ -4,10 +4,10 @@
  */
 export class Week {
     constructor(
-        public w1:number,
-        public w2:number,
-        public w3:number,
-        public w4:number
+        public w1:string,
+        public w2:string,
+        public w3:string,
+        public w4:string
     ) {
         this.w1 = w1;
         this.w2 = w2;
