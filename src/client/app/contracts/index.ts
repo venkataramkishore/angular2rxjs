@@ -3,3 +3,4 @@
  */
 export * from './contract-list.component';
 export * from './contract-list.routes';
+export * from './contracts.module';

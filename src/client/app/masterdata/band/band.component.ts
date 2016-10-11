@@ -8,8 +8,7 @@ import {Band} from '../../shared/models/index';
 @Component({
     moduleId: module.id,
     selector: 'band-list',
-    templateUrl: 'band.component.html',
-    providers: [BandService]
+    templateUrl: 'band.component.html'
 })
 export class BandComponent implements OnInit, OnDestroy {
     public bands$: Observable<Band[]>;
@@ -31,7 +30,7 @@ export class BandComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if(this.resSub && this.resSub.isUnsubscribed) {
+        if(this.resSub) {
             this.resSub.unsubscribe();
         }
     }

@@ -1,15 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Subscription} from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
-import {UserRoleService} from '../../shared/services/index';
-import {UserRole} from '../../shared/models/index';
+import { UserRoleService } from '../../shared/services/index';
+import { UserRole } from '../../shared/models/index';
 
 @Component({
     moduleId: module.id,
     selector: 'userrole-list',
-    templateUrl: 'userrole.component.html',
-    providers: [UserRoleService]
+    templateUrl: 'userrole.component.html'
 })
 export class UserRoleComponent implements OnInit, OnDestroy {
     public userRoles$: Observable<UserRole[]>;
@@ -31,7 +30,7 @@ export class UserRoleComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if(this.resSub && this.resSub.isUnsubscribed) {
+        if(this.resSub) {
             this.resSub.unsubscribe();
         }
     }

@@ -31,9 +31,9 @@
                             <td>{{price.price}}</td>
                             <td class="wrap">{{price.description}}</td>
                             <td>
-                                <button data-ng-click="edit(price.onshorepriceId)" class="btn btn-primary btn-xs">
+                                <button (click)="edit(price.onshorepriceId)" class="btn btn-primary btn-xs">
                                     <span class="glyphicon glyphicon-edit"></span></button>
-                                <button data-ng-click="remove(price.onshorepriceId)" class="btn btn-danger btn-xs">
+                                <button (click)="remove(price.onshorepriceId)" class="btn btn-danger btn-xs">
                                     <span class="glyphicon glyphicon-trash"></span></button>
                             </td>
                         </tr>

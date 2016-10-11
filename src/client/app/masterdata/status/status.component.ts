@@ -8,8 +8,7 @@ import {Status} from '../../shared/models/index';
 @Component({
     moduleId: module.id,
     selector: 'status-list',
-    templateUrl: 'status.component.html',
-    providers: [StatusService]
+    templateUrl: 'status.component.html'
 })
 export class StatusComponent implements OnInit, OnDestroy {
     public statuses$: Observable<Status[]>;
@@ -31,7 +30,7 @@ export class StatusComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if(this.resSub && this.resSub.isUnsubscribed) {
+        if(this.resSub) {
             this.resSub.unsubscribe();
         }
     }

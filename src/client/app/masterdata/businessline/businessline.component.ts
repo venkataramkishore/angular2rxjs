@@ -8,8 +8,7 @@ import {BusinessLine} from '../../shared/models/index';
 @Component({
     moduleId: module.id,
     selector: 'business-line',
-    templateUrl: 'businessline.component.html',
-    providers: [BusinessLineService]
+    templateUrl: 'businessline.component.html'
 })
 export class BusinessLineComponent implements OnInit, OnDestroy {
     public businessLines$: Observable<BusinessLine[]>;
@@ -31,7 +30,7 @@ export class BusinessLineComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if(this.resSub && this.resSub.isUnsubscribed) {
+        if(this.resSub) {
             this.resSub.unsubscribe();
         }
     }

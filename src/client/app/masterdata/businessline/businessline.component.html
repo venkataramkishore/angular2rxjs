@@ -27,8 +27,8 @@
                             <td>{{bline.resourceType}}</td>
                             <td>{{bline.skillName}}</td>
                             <td>
-                                <button data-ng-click="edit(bline.businesslineId)" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span></button>
-                                <button data-ng-click="remove(bline.businesslineId)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+                                <button (click)="edit(bline.businesslineId)" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span></button>
+                                <button (click)="remove(bline.businesslineId)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
                             </td>
                         </tr>
                     </tbody>

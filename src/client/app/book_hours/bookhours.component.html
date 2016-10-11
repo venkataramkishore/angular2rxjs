@@ -1,16 +1,16 @@
 <div class="row">
     <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked">
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
-                <a [routerLink]="['/bookhours/amhours']" >
+            <li routerLinkActive="active" >
+                <a routerLink="/bookhours/amhours" >
                     <span class="glyphicon glyphicon-time"></span> AM Hours
             </a></li>
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
-                <a [routerLink]="['/bookhours/kthours']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+            <li routerLinkActive="active" >
+                <a routerLink="/bookhours/kthours" >
                     <span class="glyphicon glyphicon-time"></span> KT Hours
                 </a></li>
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
-                <a [routerLink]="['/bookhours/fixedhours']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+            <li routerLinkActive="active">
+                <a routerLink="/bookhours/fixedhours">
                     <span class="glyphicon glyphicon-time"></span> Fixed Hours
                 </a></li>
             <li>

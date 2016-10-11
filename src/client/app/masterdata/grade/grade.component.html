@@ -23,8 +23,8 @@
                             <td>{{grade.gradeId}}</td>
                             <td>{{grade.gradeType}}</td>
                             <td>
-                                <button data-ng-click="edit(grade.gradeId)" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span></button>
-                                <button data-ng-click="remove(grade.gradeId)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+                                <button (click)="edit(grade.gradeId)" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span></button>
+                                <button (click)="remove(grade.gradeId)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
                             </td>
                         </tr>
                     </tbody>

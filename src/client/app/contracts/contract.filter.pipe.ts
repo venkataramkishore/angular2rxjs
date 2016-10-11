@@ -6,7 +6,7 @@ import { Contract } from '../shared/models/index';
     name: 'searchFilter'
 })
 export class ContractFilterPipe implements PipeTransform {
-    transform(contractList:any, [searchKey]): Contract[] {
+    transform(contractList:Contract[], searchKey:string): Contract[] {
         return contractList.filter((item: Contract) => item.customerName.indexOf(searchKey)!==-1);
     }
 }

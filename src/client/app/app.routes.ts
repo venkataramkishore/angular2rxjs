@@ -1,40 +1,51 @@
-import { provideRouter, RouterConfig } from '@angular/router';
+import { Routes } from '@angular/router';
 
-import { AboutRoutes } from './+about/index';
-import { HomeRoutes } from './+home/index';
-import { LoginRoutes } from './shared/login/login.routes';
+
+import { LoginRoutes } from './login/login.routes';
 import { ContractListRoutes } from './contracts/contract-list.routes';
 import { RegisterRoutes }  from './register/register.routes';
-import { ResourceTypeRoutes, BusinessLineRoutes, GradeRoutes,
-  RoleRoutes, SkillRoutes, BandRoutes, OffshorePriceRoutes,
-  OnshorePriceRoutes, StatusRoutes, StayRoutes, UserRoleRoutes} from './masterdata/index';
+import { MasterDataRoutes } from './masterdata/index';
 import { BookHoursRoutes } from './book_hours/index';
-import { LogoutRoutes, LogoutGuard} from './shared/logout/index';
+import { LogoutRoutes, LogoutGuard } from './logout/index';
 import { AuthGuard } from './shared/guards/index';
 
-const routes: RouterConfig = [
-  ...HomeRoutes,
-  ...AboutRoutes,
+import { LoginService, NavbarService, FixedHoursService } from './shared/services/index';
+/**
+ * All Application routes configured under one variable.
+ */
+export const APP_ROUTES: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
   ...LoginRoutes,
-  ...ContractListRoutes,
-  ...RegisterRoutes,
   ...LogoutRoutes,
-  ...ResourceTypeRoutes,
-  ...GradeRoutes,
-  ...RoleRoutes,
-  ...SkillRoutes,
-  ...BusinessLineRoutes,
-  ...BandRoutes,
-  ...OffshorePriceRoutes,
-  ...OnshorePriceRoutes,
-  ...StatusRoutes,
-  ...StayRoutes,
-  ...UserRoleRoutes,
-  ...BookHoursRoutes
+  ...ContractListRoutes,
+  ...BookHoursRoutes,
+  ...MasterDataRoutes,
+  ...RegisterRoutes
 ];
 
-export const APP_ROUTER_PROVIDERS = [
-  provideRouter(routes),
+/**
+ * All providers applicable for the global scope.
+ */
+export const APP_PROVIDERS = [
+   NavbarService
+];
+
+export const APP_GUARD = [
+  AuthGuard,
   LogoutGuard,
-  AuthGuard
+  /*
+  {
+  provide: AuthGuard,
+  useFactory: (loginService:LoginService, navbarService: NavbarService) => {
+    //TODO
+  },
+  deps: [LoginService, NavbarService]
+  },
+  {
+  provide: LogoutGuard,
+  useFactory: (loginService:LoginService) => {
+    //TODO
+  },
+  deps: [LoginService]
+  }*/
 ];

@@ -8,8 +8,7 @@ import {Role} from '../../shared/models/index';
 @Component({
     moduleId: module.id,
     selector: 'role-list',
-    templateUrl: 'role.component.html',
-    providers: [RoleService]
+    templateUrl: 'role.component.html'
 })
 export class RoleComponent implements OnInit, OnDestroy {
     public roles$: Observable<Role[]>;
@@ -31,7 +30,7 @@ export class RoleComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if(this.resSub && this.resSub.isUnsubscribed) {
+        if(this.resSub) {
             this.resSub.unsubscribe();
         }
     }

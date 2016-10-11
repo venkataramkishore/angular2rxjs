@@ -32,7 +32,7 @@ export class ResourceTypeService {
                     throw new Error(responseData.failureResponse);
                 }
             })
-            .subscribe((resTypeList) => {
+            .subscribe((resTypeList:ResourceType[]) => {
                 if (_.isArray(resTypeList) && resTypeList.length>0) {
                     this.resourceTypeSubject$.next(resTypeList);
                 }

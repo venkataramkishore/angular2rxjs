@@ -23,8 +23,8 @@
                             <td>{{skill.skillId}}</td>
                             <td>{{skill.skillName}}</td>
                             <td>
-                                <button data-ng-click="edit(skill.skillId)" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span></button>
-                                <button data-ng-click="remove(skill.skillId)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+                                <button (click)="edit(skill.skillId)" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span></button>
+                                <button (click)="remove(skill.skillId)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
                             </td>
                         </tr>
                     </tbody>

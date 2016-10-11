@@ -35,15 +35,15 @@
                                                 </td>
                                                 <td>
                                                     <button class="btn btn-block btn-danger" type="button">
-                                        <span class="glyphicon glyphicon-trash" data-ng-click="removeItem(fc)"></span>
+                                        <span class="glyphicon glyphicon-trash" (click)="removeItem(fc)"></span>
                                     </button>
                                                 </td>
                                             </tr>
                                         </tbody>
                                         <tfoot data-ng-show="fixedProjectHoursList.length >0">
                                             <tr>
-                                                <td colspan="4"><button class="btn btn-sm btn-warning pull-left" type="button" data-ng-click="resetFixedHours()">Reset</button>
-                                                    <button class="btn btn-sm btn-warning pull-right" type="button" data-ng-click="saveFixedHours()" data-ng-disabled="!fixedHourForm.$valid">Save</button></td>
+                                                <td colspan="4"><button class="btn btn-sm btn-warning pull-left" type="button" (click)="resetFixedHours()">Reset</button>
+                                                    <button class="btn btn-sm btn-warning pull-right" type="button" (click)="saveFixedHours()" data-ng-disabled="!fixedHourForm.$valid">Save</button></td>
                                             </tr>
                                         </tfoot>
                                     </table>

@@ -23,8 +23,8 @@
                             <td>{{userRole.userRoleId}}</td>
                             <td>{{userRole.userRole}}</td>
                             <td>
-                                <button data-ng-click="edit(userRole.userRoleId)" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span></button>
-                                <button data-ng-click="remove(userRole.userRoleId)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+                                <button (click)="edit(userRole.userRoleId)" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span></button>
+                                <button (click)="remove(userRole.userRoleId)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
                             </td>
                         </tr>
                     </tbody>

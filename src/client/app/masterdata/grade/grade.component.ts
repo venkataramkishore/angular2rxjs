@@ -8,8 +8,7 @@ import {Grade} from '../../shared/models/index';
 @Component({
     moduleId: module.id,
     selector: 'grade-list',
-    templateUrl: 'grade.component.html',
-    providers: [GradeService]
+    templateUrl: 'grade.component.html'
 })
 export class GradeComponent implements OnInit, OnDestroy {
     public grades$: Observable<Grade[]>;
@@ -31,7 +30,7 @@ export class GradeComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if(this.resSub && this.resSub.isUnsubscribed) {
+        if(this.resSub) {
             this.resSub.unsubscribe();
         }
     }

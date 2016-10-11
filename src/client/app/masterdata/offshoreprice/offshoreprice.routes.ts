@@ -1,9 +1,9 @@
-import { RouterConfig } from '@angular/router';
+import { Route } from '@angular/router';
 
 import {OffshorePriceComponent } from './index';
 import {AuthGuard} from '../../shared/guards/index';
 
-export const OffshorePriceRoutes: RouterConfig = [
+export const OffshorePriceRoutes: Route[] = [
   {
     path: 'offshoreprices',
     component: OffshorePriceComponent,

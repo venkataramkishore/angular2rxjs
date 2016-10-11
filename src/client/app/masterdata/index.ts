@@ -9,3 +9,5 @@ export * from './band/index';
 export * from './offshoreprice/index';
 export * from './onshoreprice/index';
 export * from './userrole/index';
+export * from './masterdata.module';
+export * from './masterdata.routes';

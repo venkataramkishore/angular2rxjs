@@ -1,7 +1,6 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {ControlGroup} from '@angular/common';
-import {ROUTER_DIRECTIVES, Router} from '@angular/router';
-import {REACTIVE_FORM_DIRECTIVES, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Router} from '@angular/router';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
@@ -14,9 +13,7 @@ import {RegisterService} from '../shared/services/index';
     moduleId: module.id,
     selector: 'sign-up',
     templateUrl: 'register.component.html',
-    styleUrls: ['register.component.css'],
-    directives: [ROUTER_DIRECTIVES, REACTIVE_FORM_DIRECTIVES],
-    providers: [RegisterService]
+    styleUrls: ['register.component.css']
 })
 export class RegisterComponent implements OnInit, OnDestroy {
 
@@ -48,12 +45,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        if(this.regSub && !this.regSub.isUnsubscribed) {
+        if( this.regSub ) {
             this.regSub.unsubscribe();
         }
     }
 
-    matchPassword(group: ControlGroup): any {
+    matchPassword(group: FormGroup): any {
         let password = group.controls['password'];
         let confirm = group.controls['confirmPwd'];
 

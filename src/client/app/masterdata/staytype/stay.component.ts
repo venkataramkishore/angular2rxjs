@@ -8,8 +8,7 @@ import {Stay} from '../../shared/models/index';
 @Component({
     moduleId: module.id,
     selector: 'stay-list',
-    templateUrl: 'stay.component.html',
-    providers: [StayService]
+    templateUrl: 'stay.component.html'
 })
 export class StayComponent implements OnInit, OnDestroy {
     public stays$: Observable<Stay[]>;
@@ -31,7 +30,7 @@ export class StayComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if(this.resSub && this.resSub.isUnsubscribed) {
+        if(this.resSub) {
             this.resSub.unsubscribe();
         }
     }

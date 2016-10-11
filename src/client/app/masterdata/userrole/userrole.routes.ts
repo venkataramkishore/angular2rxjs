@@ -1,9 +1,9 @@
-import { RouterConfig } from '@angular/router';
+import { Route } from '@angular/router';
 
 import {UserRoleComponent } from './index';
 import {AuthGuard} from '../../shared/guards/index';
 
-export const UserRoleRoutes: RouterConfig = [
+export const UserRoleRoutes: Route[] = [
   {
     path: 'userroles',
     component: UserRoleComponent,

@@ -17,7 +17,7 @@ export class NavbarService {
     constructor() {
         let mainmenu = [
             //new MenuItem('home', 'Home',  ['/'], true),
-            new MenuItem('about', 'About',  ['/about'], true),
+            //new MenuItem('about', 'About',  ['/about'], true),
             new MenuItem('login', 'Sign In',  ['/login'], true),
             new MenuItem('contracts', 'Contracts',  ['/contracts'], false, true),
             new MenuItem('signup', 'Sign Up',  ['/signup'], true),

@@ -1,9 +1,9 @@
-import { RouterConfig } from '@angular/router';
+import { Route } from '@angular/router';
 
 import { ContractListComponent } from './index';
-import {AuthGuard} from '../shared/guards/index';
+import { AuthGuard } from '../shared/guards/index';
 
-export const ContractListRoutes: RouterConfig = [
+export const ContractListRoutes: Route[] = [
   {
     path: 'contracts',
     component: ContractListComponent,

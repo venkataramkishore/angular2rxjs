@@ -8,8 +8,7 @@ import {OffshorePrice} from '../../shared/models/index';
 @Component({
     moduleId: module.id,
     selector: 'offshore-prices',
-    templateUrl: 'offshoreprice.component.html',
-    providers: [OffshoreService]
+    templateUrl: 'offshoreprice.component.html'
 })
 export class OffshorePriceComponent implements OnInit, OnDestroy {
     public offshorePrices$: Observable<OffshorePrice[]>;
@@ -31,7 +30,7 @@ export class OffshorePriceComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if(this.resSub && this.resSub.isUnsubscribed) {
+        if(this.resSub) {
             this.resSub.unsubscribe();
         }
     }

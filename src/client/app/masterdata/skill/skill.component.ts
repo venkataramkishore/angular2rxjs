@@ -8,8 +8,7 @@ import {Skill} from '../../shared/models/index';
 @Component({
     moduleId: module.id,
     selector: 'skill-list',
-    templateUrl: 'skill.component.html',
-    providers: [SkillService]
+    templateUrl: 'skill.component.html'
 })
 export class SkillComponent implements OnInit, OnDestroy {
     public skills$: Observable<Skill[]>;
@@ -31,7 +30,7 @@ export class SkillComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if(this.resSub && this.resSub.isUnsubscribed) {
+        if(this.resSub) {
             this.resSub.unsubscribe();
         }
     }

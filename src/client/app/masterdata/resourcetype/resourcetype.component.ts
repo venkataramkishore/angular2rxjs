@@ -8,8 +8,7 @@ import {ResourceType} from '../../shared/models/index';
 @Component({
     moduleId: module.id,
     selector: 'resource-type',
-    templateUrl: 'resourcetype.component.html',
-    providers: [ResourceTypeService]
+    templateUrl: 'resourcetype.component.html'
 })
 export class ResourceTypeComponent implements OnInit, OnDestroy {
     public resourceType$: Observable<ResourceType[]>;
@@ -31,7 +30,7 @@ export class ResourceTypeComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if(this.resSub && this.resSub.isUnsubscribed) {
+        if(this.resSub) {
             this.resSub.unsubscribe();
         }
     }

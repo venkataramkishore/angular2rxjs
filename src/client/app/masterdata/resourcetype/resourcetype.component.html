@@ -23,9 +23,9 @@
                             <td>{{item.resourcetypeId}}</td>
                             <td>{{item.resourceType}}</td>
                             <td>
-                                <button data-ng-click="edit(rtype.resourcetypeId)" class="btn btn-primary btn-xs">
+                                <button (click)="edit(rtype.resourcetypeId)" class="btn btn-primary btn-xs">
                                     <span class="glyphicon glyphicon-edit"></span></button>
-								<button data-ng-click="remove(rtype.resourcetypeId)" class="btn btn-danger btn-xs">
+								<button (click)="remove(rtype.resourcetypeId)" class="btn btn-danger btn-xs">
                                     <span class="glyphicon glyphicon-trash"></span></button>
                             </td>
                         </tr>
